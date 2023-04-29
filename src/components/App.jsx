@@ -26,7 +26,7 @@ function App() {
       <Counter/>
       {posts.map(post =>
 
-<PostItem post={post}/>
+<PostItem post={post} key={post.id}/>
         )}
 
     </div>
