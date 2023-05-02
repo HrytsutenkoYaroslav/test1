@@ -4,8 +4,8 @@ import ClassCounter from './ClassCounter.jsx';
 import "../styles/App.css";
 import PostItem from "./PostItem.jsx";
 import PstList from "./PstList.jsx"
-import MyButton from "./Ui/Button/MyButton.jsx"
-import MyInput from "./Ui/input/MyInput.jsx"
+
+import PostForm from "./PostForm.jsx"
 function App() {
 
   const [posts, setPosts] = useState([
@@ -26,16 +26,15 @@ function App() {
 
   ])
 
+const createPost= (newPost) => {
+setPosts ([...posts, newPost])
+}
   return (
     <div  className="App">
       <ClassCounter/>
       <Counter/>
+<PostForm create={createPost}/>
 
-      <form action="">
-        <MyInput type="text" placeholder='title' />
-        <MyInput type="text" placeholder='body' />
-        <MyButton >Create post</MyButton>
-      </form>
 <PstList posts={posts} title="Список постов"/>
 <PstList posts={posts2} title="Список постов 2"/>
     </div>
@@ -44,3 +43,6 @@ function App() {
 
 
 export default App;
+
+
+//начинать с  01:02 кнопка удалить
