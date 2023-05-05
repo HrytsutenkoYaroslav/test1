@@ -29,13 +29,27 @@ function App() {
 const createPost= (newPost) => {
 setPosts ([...posts, newPost])
 }
+
+const removePost = (post) => {
+setPosts(posts.filter(p => p.id !==post.id))
+}
+
   return (
     <div  className="App">
       <ClassCounter/>
       <Counter/>
 <PostForm create={createPost}/>
+<div>
+  <select name="" id="">
+    <option value="value1">по названию </option>
+    <option value="value2">по no названию </option>
+  </select>
+</div>
+{posts.length !== 0
+    ?<PstList remove={removePost} posts={posts} title="Список постов"/>
+    : <div>Нет Постов</div>
+}
 
-<PstList posts={posts} title="Список постов"/>
 <PstList posts={posts2} title="Список постов 2"/>
     </div>
   );
@@ -45,4 +59,6 @@ setPosts ([...posts, newPost])
 export default App;
 
 
-//начинать с  01:02 кнопка удалить
+
+
+//1-06
