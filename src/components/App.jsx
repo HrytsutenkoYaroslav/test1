@@ -4,8 +4,9 @@ import ClassCounter from './ClassCounter.jsx';
 import "../styles/App.css";
 import PostItem from "./PostItem.jsx";
 import PstList from "./PstList.jsx"
-
+import MySelect from "./Ui/Select/MySelect.jsx";
 import PostForm from "./PostForm.jsx"
+
 function App() {
 
   const [posts, setPosts] = useState([
@@ -25,9 +26,13 @@ function App() {
     {id:11111, title: 'javaScript', body: 'lorem20'},
 
   ])
-
+const [selectedSort, setSelectedSort] = useState("")
 const createPost= (newPost) => {
 setPosts ([...posts, newPost])
+}
+
+const sortPosts = (sort)=>{
+setSelectedSort(sort);
 }
 
 const removePost = (post) => {
@@ -39,11 +44,17 @@ setPosts(posts.filter(p => p.id !==post.id))
       <ClassCounter/>
       <Counter/>
 <PostForm create={createPost}/>
+<hr style={{margin: '20px'}}/>
 <div>
-  <select name="" id="">
-    <option value="value1">по названию </option>
-    <option value="value2">по no названию </option>
-  </select>
+
+  <MySelect
+  value={selectedSort}
+  onChange = {sortPosts()}
+  defaultValue="cортировка "
+            options={[{value: "title", name: "gj yfpdfybz01"},
+                      {value: "body", name: "gj yfpdfybz02"},
+]}
+  />
 </div>
 {posts.length !== 0
     ?<PstList remove={removePost} posts={posts} title="Список постов"/>
@@ -61,4 +72,4 @@ export default App;
 
 
 
-//1-06
+
